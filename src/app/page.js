@@ -86,12 +86,9 @@ const styles = {
     textAlign: "center",
     fontFamily: "Arial, sans-serif",
     marginTop: "50px",
-    backgroundColor: "#ffe6f0",
+    backgroundColor: "#ffe6f0", // Light pink for the whole page
     minHeight: "100vh",
     padding: "20px",
-    maxWidth: "500px",
-    marginLeft: "auto",
-    marginRight: "auto",
   },
   title: {
     fontSize: "36px",
@@ -113,6 +110,7 @@ const styles = {
     fontWeight: "bold",
     cursor: "pointer",
     border: "2px solid #000",
+    backgroundColor: "#fff", // White only for the squares
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -135,4 +133,5 @@ const styles = {
     cursor: "pointer",
   },
 };
+
 
