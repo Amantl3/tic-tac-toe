@@ -21,9 +21,16 @@ export default function Home() {
   }
 
   const winner = calculateWinner(squares);
-  let status = winner
-    ? `Winner: ${winner}`
-    : `Next player: ${isXNext ? "X" : "O"}`;
+  const isBoardFull = squares.every(square => square !== null);
+
+  let status;
+  if (winner) {
+    status = `Winner: ${winner}`;
+  } else if (isBoardFull) {
+    status = "It's a draw!";
+  } else {
+    status = `Next player: ${isXNext ? "X" : "O"}`;
+  }
 
   return (
     <div style={styles.container}>
@@ -35,10 +42,10 @@ export default function Home() {
             key={index}
             onClick={() => handleClick(index)}
             style={{
-  ...styles.square,
-  color: "#000", 
-  backgroundColor: "#fff",
-}}
+              ...styles.square,
+              color: "#000",
+              backgroundColor: "#fff",
+            }}
           >
             {value}
           </button>
@@ -79,27 +86,30 @@ const styles = {
     textAlign: "center",
     fontFamily: "Arial, sans-serif",
     marginTop: "50px",
-    backgroundColor: "#ffe6f0", 
+    backgroundColor: "#ffe6f0",
     minHeight: "100vh",
     padding: "20px",
+    maxWidth: "500px",
+    marginLeft: "auto",
+    marginRight: "auto",
   },
   title: {
-    fontSize: "40px",
+    fontSize: "36px",
     fontWeight: "bold",
     marginBottom: "30px",
     color: "#333",
   },
   board: {
     display: "grid",
-    gridTemplateColumns: "repeat(3, 100px)",
+    gridTemplateColumns: "repeat(3, 80px)",
     gap: "10px",
     justifyContent: "center",
     marginBottom: "20px",
   },
   square: {
-    width: "100px",
-    height: "100px",
-    fontSize: "36px",
+    width: "80px",
+    height: "80px",
+    fontSize: "28px",
     fontWeight: "bold",
     cursor: "pointer",
     border: "2px solid #000",
@@ -108,9 +118,11 @@ const styles = {
     justifyContent: "center",
   },
   status: {
-    fontSize: "22px",
+    fontSize: "20px",
     fontWeight: "bold",
     marginBottom: "20px",
+    wordWrap: "break-word",
+    color: "#333",
   },
   restartButton: {
     padding: "10px 20px",
@@ -123,3 +135,4 @@ const styles = {
     cursor: "pointer",
   },
 };
+
